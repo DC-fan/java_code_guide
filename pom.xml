@@ -38,6 +38,14 @@
             <artifactId>jol-cli</artifactId>
             <version>0.14</version>
         </dependency>
+
+
+        <!-- 命令行参数解析器 -->
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.72</version>
+        </dependency>
     </dependencies>
 
 </project>
