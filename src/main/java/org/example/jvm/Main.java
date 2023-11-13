@@ -1,5 +1,10 @@
 package org.example.jvm;
 
+import org.example.jvm.classpath.Classpath;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Main {
 
 
@@ -17,7 +22,17 @@ public class Main {
     }
 
     private static void startJVM(Cmd cmd) {
-        System.out.printf("classpath: %s args: %s\n", cmd.classpath, cmd.getMathClass(), cmd.getAppArgs());
+        Classpath cp = new Classpath("/tttt/cccc", "");
+        System.out.printf("classpath: %s class: %s, args: %s\n", cmd.classpath, cmd.getMathClass(), cmd.getAppArgs());
+        String className = cmd.getMathClass().replace(".", "/"); // java.lang.String
+        try {
+            byte[] bytes = cp.readClass(className);
+            System.out.println(Arrays.toString(bytes));
+        } catch (Exception e) {
+            System.out.println("Could not find or load main class");
+            e.getStackTrace();
+        }
+
     }
 
 }
